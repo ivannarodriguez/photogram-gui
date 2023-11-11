@@ -23,4 +23,16 @@
     <th>Posted</th>
     <td></td>
   </tr>
+
+  <% @list_of_photos.each do |photo| %>
+  <tr> 
+    <td> <img src="<%= photo.image %>"> </td>
+    <td> <%= photo.caption %> </td>
+    <td> <%= photo.poster.username %> </td>
+    <td> <%= photo.created_at %> </td>
+    <td> <a href="/"> Show details </a> </td>
+  </tr>
+  <% end %>
+
+
 </table>
