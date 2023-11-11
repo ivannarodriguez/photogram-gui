@@ -8,7 +8,13 @@ class UsersController < ApplicationController
   def show_details
     input_username = params["username"]
 
-    render({:template => "user_templates/show_details"})
+    @user = User.where({:username => input_username})[0]
+
+    if @user == nil
+      redirect_to("/404")
+    else
+      render({:template => "user_templates/show_details"})
+    end
   end
 
 end
