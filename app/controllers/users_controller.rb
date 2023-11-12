@@ -17,4 +17,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def insert_user
+    username = params["input_username"]
+    new_user = User.new
+    new_user.username = username
+    new_user.save
+    redirect_to("/users/" + new_user.username)
+  end
+
+  def update_user
+    username = params["username"]
+    new_username = params["input_username"]
+    user = User.where({:username => username})[0]
+    user.username = new_username
+    user.save
+    redirect_to("/users/" + user.username)
+  end
+
 end

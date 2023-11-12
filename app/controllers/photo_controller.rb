@@ -34,4 +34,20 @@ class PhotoController < ApplicationController
     redirect_to("/photos/" + new_photo.id.to_s)
   end
 
+  def update_photo
+    input_image = params["input_image"] # name of form in index.html
+    input_caption = params["input_caption"]
+    input_owner_id = params["input_owner_id"]
+
+    photo_id = params["photo_id"]
+    photo = Photo.where({:id => photo_id})[0]
+
+    photo.image = input_image
+    photo.caption = input_caption
+
+    photo.save
+
+    redirect_to("/photos/" + photo.id.to_s)
+  end
+
 end
